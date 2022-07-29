@@ -43,6 +43,9 @@ jobs:
       - name: Tap mcwarman/tap
         run: brew tap mcwarman/tap
 
+      - name: Set up git user
+        uses: fregante/setup-git-user@v1
+
       - name: Bump formulae
         run: brew bump mcwarman/tap/helm-to-hcl --full-name --open-pr
         env:
