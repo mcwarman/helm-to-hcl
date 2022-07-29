@@ -1,0 +1,10 @@
+linters:
+  enable:
+    - errorlint
+    - gofumpt
+    - ifshort
+    - misspell
+    - nlreturn
+    - tagliatelle
+    - testpackage
+    - thelper
