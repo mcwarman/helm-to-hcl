@@ -37,7 +37,7 @@ brews:
   - tap:
       owner: mcwarman
       name: homebrew-tap
-      branch: helm-to-hcl
+      branch: "{{ .ProjectName }}-{{ .Tag }}"
     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
     homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
     description: "Utility for converting helm configuration to HCL for use in Terraform"

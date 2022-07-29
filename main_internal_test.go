@@ -17,7 +17,7 @@ func TestHelmToHcl(t *testing.T) {
 	tests := []test{
 		{
 			value:     "",
-			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n      }\n    )\n  ]\n}",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 		{
@@ -27,27 +27,27 @@ func TestHelmToHcl(t *testing.T) {
 		},
 		{
 			value:     "image:\n  registry: docker.io\n  repository: bitnami/postgresql\n  tag: 14.4.0-debian-11-r13",
-			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        image = {\n          registry = \"docker.io\"\n          repository = \"bitnami/postgresql\"\n          tag = \"14.4.0-debian-11-r13\"\n        }\n      }\n    )\n  ]\n}",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        image = {\n          registry = \"docker.io\"\n          repository = \"bitnami/postgresql\"\n          tag = \"14.4.0-debian-11-r13\"\n        }\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 		{
 			value:     "key1:\n  - value1\n  - value2\n  - value3",
-			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        key1 = [\n          \"value1\"\n          \"value2\"\n          \"value3\"\n        ]\n      }\n    )\n  ]\n}",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        key1 = [\n          \"value1\"\n          \"value2\"\n          \"value3\"\n        ]\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 		{
 			value:     "key1: [value1,value2,value3]",
-			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        key1 = [\n          \"value1\"\n          \"value2\"\n          \"value3\"\n        ]\n      }\n    )\n  ]\n}",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        key1 = [\n          \"value1\"\n          \"value2\"\n          \"value3\"\n        ]\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 		{
 			value:     "one:\n  - id: 1\n    name: franc\n  - id: 11\n    name: Tom",
-			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        one = [\n          {\n            id = 1\n            name = \"franc\"\n          }\n          {\n            id = 11\n            name = \"Tom\"\n          }\n        ]\n      }\n    )\n  ]\n}",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        one = [\n          {\n            id = 1\n            name = \"franc\"\n          }\n          {\n            id = 11\n            name = \"Tom\"\n          }\n        ]\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 		{
 			value:     "auth:\n  secretKeys:\n    adminPasswordKey: postgres-password",
-			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        auth = {\n          secretKeys = {\n            adminPasswordKey = \"postgres-password\"\n          }\n        }\n      }\n    )\n  ]\n}",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        auth = {\n          secretKeys = {\n            adminPasswordKey = \"postgres-password\"\n          }\n        }\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 	}

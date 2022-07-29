@@ -114,6 +114,7 @@ func helmToHcl(input []byte) (string, error) {
 	buf.WriteString(stringWithIndent(`]`, 2))
 	buf.WriteByte('\n')
 	buf.WriteString(`}`)
+	buf.WriteByte('\n')
 
 	return buf.String(), nil
 }
