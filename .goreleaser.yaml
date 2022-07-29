@@ -34,15 +34,14 @@ scoop:
   homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
   description: "Utility for converting helm configuration to HCL for use in Terraform"
   license: MIT
-# brews:
-#   - tap:
-#       owner: mcwarman
-#       name: homebrew-tap
-#       token: "{{ .Env.GH_PUBLIC_REPO_TOKEN }}"
-#     folder: Formula
-#     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
-#     homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
-#     description: "Utility for converting helm configuration to HCL for use in Terraform"
-#     license: MIT
-#     test: |
-#       system "#{bin}/helm-to-hcl", "--version"
+brews:
+  - tap:
+      owner: mcwarman
+      name: homebrew-tap
+    skip_upload: true
+    folder: Formula
+    homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
+    description: "Utility for converting helm configuration to HCL for use in Terraform"
+    license: MIT
+    test: |
+      system "#{bin}/helm-to-hcl", "--version"
