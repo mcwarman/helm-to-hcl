@@ -25,3 +25,22 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
+scoop:
+  bucket:
+    owner: mcwarman
+    name: scoop-bucket
+  commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
+  homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
+  description: "Utility for converting helm configuration to HCL for use in Terraform"
+  license: MIT
+brews:
+  - tap:
+      owner: mcwarman
+      name: homebrew-tap
+      branch: helm-to-hcl
+    commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+    homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
+    description: "Utility for converting helm configuration to HCL for use in Terraform"
+    license: MIT
+    test: |
+      system "#{bin}/helm-to-hcl", "--version"
