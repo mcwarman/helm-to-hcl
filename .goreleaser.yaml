@@ -29,6 +29,7 @@ scoop:
   bucket:
     owner: mcwarman
     name: scoop-bucket
+    token: "{{ .Env.GH_PUBLIC_REPO_TOKEN }}"
   commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
   homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
   description: "Utility for converting helm configuration to HCL for use in Terraform"
@@ -38,6 +39,8 @@ brews:
       owner: mcwarman
       name: homebrew-tap
       branch: "{{ .ProjectName }}-{{ .Tag }}"
+      token: "{{ .Env.GH_PUBLIC_REPO_TOKEN }}"
+    folder: Formula
     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
     homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
     description: "Utility for converting helm configuration to HCL for use in Terraform"
