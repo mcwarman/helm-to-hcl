@@ -46,9 +46,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_PUBLIC_REPO_TOKEN: ${{ secrets.GH_PUBLIC_REPO_TOKEN }}
 
-      - name: Set up git user
-        uses: fregante/setup-git-user@v1
-
       - name: Bump formulae
         run: ./scripts/homebrew-release.sh
         env:

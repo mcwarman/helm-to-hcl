@@ -11,6 +11,9 @@ git clone "https://bot:${GH_PUBLIC_REPO_TOKEN}@github.com/mcwarman/homebrew-tap.
 
 cd ./dist/homebrew-tap
 
+git config user.name  "github-actions[bot]"
+git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
 git checkout -b "${branch}"
 
 cp ../helm-to-hcl.rb ./Formula/helm-to-hcl.rb
