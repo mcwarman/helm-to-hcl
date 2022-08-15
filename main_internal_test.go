@@ -42,12 +42,17 @@ func TestHelmToHcl(t *testing.T) {
 		},
 		{
 			value:     "one:\n  - id: 1\n    name: franc\n  - id: 11\n    name: Tom",
-			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        one = [\n          {\n            id = 1\n            name = \"franc\"\n          }\n          {\n            id = 11\n            name = \"Tom\"\n          }\n        ]\n      }\n    )\n  ]\n}\n",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        one = [\n          {\n            id = 1\n            name = \"franc\"\n          },\n          {\n            id = 11\n            name = \"Tom\"\n          },\n        ]\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 		{
 			value:     "auth:\n  secretKeys:\n    adminPasswordKey: postgres-password",
 			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        auth = {\n          secretKeys = {\n            adminPasswordKey = \"postgres-password\"\n          }\n        }\n      }\n    )\n  ]\n}\n",
+			wantError: "",
+		},
+		{
+			value:     "tolerations:\n  - key: \"dedicated\"\n    operator: \"Equal\"\n    value: \"services\"\n    effect: \"NoSchedule\"\n  - key: \"dedicated\"\n    operator: \"Equal\"\n    value: \"service-2\"\n    effect: \"NoSchedule\"",
+			want:      "resource \"helm_release\" \"default\" {\n  values = [\n    yamlencode(\n      {\n        tolerations = [\n          {\n            key = \"dedicated\"\n            operator = \"Equal\"\n            value = \"services\"\n            effect = \"NoSchedule\"\n          },\n          {\n            key = \"dedicated\"\n            operator = \"Equal\"\n            value = \"service-2\"\n            effect = \"NoSchedule\"\n          },\n        ]\n      }\n    )\n  ]\n}\n",
 			wantError: "",
 		},
 	}

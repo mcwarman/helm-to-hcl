@@ -141,7 +141,7 @@ func convert(m yaml.MapSlice, indent int) string {
 						buf.WriteString(stringWithIndent(`{`, indent+2))
 						buf.WriteString(convert(v, indent+4))
 						buf.WriteByte('\n')
-						buf.WriteString(stringWithIndent(`}`, indent+2))
+						buf.WriteString(stringWithIndent(`},`, indent+2))
 					default:
 						buf.WriteByte('\n')
 						buf.WriteString(stringWithIndent(convertValue(v), indent+2))
