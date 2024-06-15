@@ -1,3 +1,4 @@
+version: 2
 before:
   hooks:
     - go mod tidy
@@ -8,13 +9,6 @@ builds:
       - linux
       - windows
       - darwin
-archives:
-  - replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
 checksum:
   name_template: "checksums.txt"
 snapshot:
@@ -25,21 +19,21 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
-scoop:
-  bucket:
-    owner: mcwarman
-    name: scoop-bucket
-    token: "{{ .Env.GH_PUBLIC_REPO_TOKEN }}"
-  commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
-  homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
-  description: "Utility for converting helm configuration to HCL for use in Terraform"
-  license: MIT
+scoops:
+  - repository:
+      owner: mcwarman
+      name: scoop-bucket
+      token: "{{ .Env.GH_PUBLIC_REPO_TOKEN }}"
+    commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
+    homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
+    description: "Utility for converting helm configuration to HCL for use in Terraform"
+    license: MIT
 brews:
-  - tap:
+  - repository:
       owner: mcwarman
       name: homebrew-tap
     skip_upload: true
-    folder: Formula
+    directory: Formula
     homepage: "https://github.com/mcwarman/helm-to-hcl/blob/main/README.md"
     description: "Utility for converting helm configuration to HCL for use in Terraform"
     license: MIT
