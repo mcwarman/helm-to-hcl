@@ -34,7 +34,7 @@ jobs:
         run: go test ./... -race -coverpkg=./... -covermode=atomic -coverprofile=coverage.out
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
